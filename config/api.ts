@@ -4,7 +4,7 @@
 // In development: uses /api (proxied by Vite)
 // In production: uses VITE_API_URL environment variable
 
-const rawApiUrl = import.meta.env.VITE_API_URL || '/api';
+const rawApiUrl = import.meta.env.VITE_API_URL || process.env.VITE_API_URL || 'https://examportal-staging.up.railway.app/api' || '/api';
 // Ensure URL ends with /api
 export const API_BASE = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl.replace(/\/$/, '')}/api`;
 
