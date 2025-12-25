@@ -4,6 +4,7 @@ const path = require('path');
 require('dotenv').config();
 
 const connectDB = require('./config/db');
+const initializeAdmin = require('./utils/initAdmin');
 
 // Route imports
 const authRoutes = require('./routes/auth');
@@ -14,8 +15,11 @@ const resultRoutes = require('./routes/results');
 
 const app = express();
 
-// Connect to MongoDB
-connectDB();
+// Connect to MongoDB and initialize admin
+connectDB().then(() => {
+    // Auto-seed admin user if not exists
+    initializeAdmin();
+});
 
 // Middleware
 app.use(cors());
