@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 // API Configuration
 // In development: uses /api (proxied by Vite)
 // In production: uses VITE_API_URL environment variable
