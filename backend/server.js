@@ -28,9 +28,19 @@ app.use('/api/questions', questionRoutes);
 app.use('/api/exams', examRoutes);
 app.use('/api/results', resultRoutes);
 
-// Health check
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'OK', timestamp: new Date().toISOString() });
+
+// Enhanced Health check with DB status
+app.get('/api/health', async (req, res) => {
+    const mongoose = require('mongoose');
+    const dbStates = ['disconnected', 'connected', 'connecting', 'disconnecting'];
+
+    res.json({
+        status: 'OK',
+        database: dbStates[mongoose.connection.readyState] || 'unknown',
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development'
+    });
 });
 
 // Serve static files in production (only if frontend is bundled with backend)
