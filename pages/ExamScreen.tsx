@@ -1,11 +1,8 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useParams, Link, Navigate } from 'react-router-dom';
 import { User } from '../types';
 import { useLanguage } from '../i18n';
-
-// API Base URL
-const API_BASE = '/api';
+import { API_BASE } from '../config/api';
 
 interface ExamScreenProps {
   user: User;

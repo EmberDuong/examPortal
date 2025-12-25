@@ -2,9 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useLanguage, LanguageSwitcher } from '../i18n';
-
-// API Base URL
-const API_BASE = '/api';
+import { API_BASE } from '../config/api';
 
 const RegisterPage: React.FC = () => {
     const navigate = useNavigate();

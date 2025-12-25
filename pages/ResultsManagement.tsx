@@ -3,9 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { User } from '../types';
 import { useLanguage, LanguageSwitcher } from '../i18n';
-
-// API Base URL
-const API_BASE = '/api';
+import { API_BASE } from '../config/api';
 
 interface ResultsManagementProps {
     user: User;

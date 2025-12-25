@@ -3,9 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { User } from '../types';
 import { useLanguage, LanguageSwitcher } from '../i18n';
-
-// API Base URL
-const API_BASE = '/api';
+import { API_BASE } from '../config/api';
 
 interface StudentResultsPageProps {
     user: User;
@@ -183,9 +181,9 @@ const StudentResultsPage: React.FC<StudentResultsPageProps> = ({ user, onLogout 
                                                         <span className="text-lg font-bold">{result.score}</span>
                                                         <span className="text-slate-500 text-sm">/ {result.exam.totalMarks}</span>
                                                         <span className={`px-2 py-0.5 rounded text-xs font-bold ${percentage >= 80 ? 'bg-green-100 text-green-700' :
-                                                                percentage >= 60 ? 'bg-blue-100 text-blue-700' :
-                                                                    percentage >= 40 ? 'bg-yellow-100 text-yellow-700' :
-                                                                        'bg-red-100 text-red-700'
+                                                            percentage >= 60 ? 'bg-blue-100 text-blue-700' :
+                                                                percentage >= 40 ? 'bg-yellow-100 text-yellow-700' :
+                                                                    'bg-red-100 text-red-700'
                                                             }`}>{percentage}%</span>
                                                     </div>
                                                 </td>

@@ -3,13 +3,11 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { User, UserRole } from '../types';
 import { useLanguage, LanguageSwitcher } from '../i18n';
+import { API_BASE } from '../config/api';
 
 interface LoginPageProps {
   onLogin: (user: User) => void;
 }
-
-// API Base URL
-const API_BASE = '/api';
 
 const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   const navigate = useNavigate();

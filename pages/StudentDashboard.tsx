@@ -3,9 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { User } from '../types';
 import { useLanguage, LanguageSwitcher } from '../i18n';
-
-// API Base URL
-const API_BASE = '/api';
+import { API_BASE } from '../config/api';
 
 interface StudentDashboardProps {
   user: User;

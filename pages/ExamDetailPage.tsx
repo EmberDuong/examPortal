@@ -1,11 +1,8 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { User } from '../types';
 import { useLanguage } from '../i18n';
-
-// API Base URL
-const API_BASE = '/api';
+import { API_BASE } from '../config/api';
 
 interface ExamDetailPageProps {
   user: User;
@@ -52,16 +49,16 @@ const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ user, onLogout }) => {
       setLoading(true);
 
       // Fetch exam details
-      const examRes = await fetch(`${API_BASE}/exams/${examId}`, {
-        headers: { 'Authorization': `Bearer ${getToken()}` }
+      const examRes = await fetch(`${API_BASE}/exams/${examId} `, {
+        headers: { 'Authorization': `Bearer ${getToken()} ` }
       });
       const examData = await examRes.json();
       if (!examRes.ok) throw new Error(examData.message);
       setExam(examData);
 
       // Check if already submitted
-      const checkRes = await fetch(`${API_BASE}/results/check/${examId}`, {
-        headers: { 'Authorization': `Bearer ${getToken()}` }
+      const checkRes = await fetch(`${API_BASE}/results/check/${examId} `, {
+        headers: { 'Authorization': `Bearer ${getToken()} ` }
       });
       const checkData = await checkRes.json();
       if (checkRes.ok && checkData.hasSubmitted) {
