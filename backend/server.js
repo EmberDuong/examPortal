@@ -33,13 +33,25 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Serve static files in production
+// Serve static files in production (only if frontend is bundled with backend)
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../dist')));
+    const distPath = path.join(__dirname, '../dist');
+    const fs = require('fs');
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../dist/index.html'));
-    });
+    // Only serve static files if dist folder exists
+    if (fs.existsSync(distPath)) {
+        app.use(express.static(distPath));
+
+        app.get('*', (req, res) => {
+            // Don't serve index.html for API routes
+            if (!req.path.startsWith('/api')) {
+                res.sendFile(path.join(distPath, 'index.html'));
+            }
+        });
+        console.log('Serving frontend from:', distPath);
+    } else {
+        console.log('No frontend dist folder found. Running as API-only server.');
+    }
 }
 
 // Error handling middleware
