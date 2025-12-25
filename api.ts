@@ -1,5 +1,6 @@
 // API Service for ExamPortal
-const API_BASE_URL = '/api';
+import { API_BASE } from './config/api';
+const API_BASE_URL = API_BASE;
 
 // Get token from localStorage
 const getToken = (): string | null => {
