@@ -1,0 +1,9 @@
+
+{
+  "name": "ExamPortal - Advanced Online Examination System",
+  "description": "A comprehensive end-to-end examination platform for candidates and administrators, featuring real-time proctoring simulations, exam scheduling, and detailed performance analytics.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
